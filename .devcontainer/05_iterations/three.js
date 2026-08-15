@@ -14,13 +14,13 @@ for (const greet of greetings) {
     //console.log(`Each char is ${greet}`)
 }
 
-// Maps
+// Maps (known for uniqueness)
 
 const map = new Map()
 map.set('IN', "India")
 map.set('USA', "United States of America")
 map.set('Fr', "France")
-map.set('IN', "India")
+map.set('IN', "India") //no duplicate values print
 
 
 // console.log(map);
@@ -35,6 +35,7 @@ const myObject = {
 }
 
 // for (const [key, value] of myObject) {
-//     console.log(key, ':-', value);
+//     console.log(key, ':-', value);    //no output
     
 // }
+//Maps are iteratable but Objects not
