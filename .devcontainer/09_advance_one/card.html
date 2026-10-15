@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Profile Card</title>
+</head>
+
+<body style="background-color: #212121; color: rgb(235, 89, 89);">
+
+    <button id="getProfile">Get Profile</button>
+
+    <div id="card"></div>
+
+    <script>
+        const requestUrl = 'https://api.github.com/users/hiteshchoudhary';
+
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('GET', requestUrl);
+
+        xhr.onreadystatechange = function () {
+
+            console.log(xhr.readyState);
+
+            if (xhr.readyState === 4) {
+
+                const data = JSON.parse(this.responseText);
+
+                console.log(typeof data);
+                console.log(data.followers);
+
+                document.getElementById("card").innerHTML = `
+                    <div style="
+                        width: 300px;
+                        margin-top: 20px;
+                        padding: 20px;
+                        background-color: white;
+                        color: black;
+                        border-radius: 15px;
+                        text-align: center;
+                    ">
+
+                        <img 
+                            src="${data.avatar_url}" 
+                            width="120"
+                            style="border-radius: 50%;"
+                        >
+
+                        <h2>${data.name}</h2>
+
+                        <p>@${data.login}</p>
+
+                        <p><strong>${data.followers}</strong> Followers</p>
+
+                    </div>
+                `;
+            }
+        }
+
+        xhr.send();
+    </script>
+
+</body>
+</html>
